@@ -46,8 +46,8 @@ const descriptors: Record<ProximityLevel, ProximityDescriptor> = {
   },
   "very-close": {
     level: "very-close",
-    label: "¡Estás muy cerca!",
-    message: "Llegaste a la zona indicada. El código está a pocos pasos.",
+    label: "SUPER CALIENTE",
+    message: "Llegaste al punto. Prestá atención: la señal está al máximo.",
     progress: 100,
   },
 };

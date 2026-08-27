@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title">
+  <title id="title">Brújula de la aventura</title>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7fbfc"/><stop offset=".56" stop-color="#c8d9df"/><stop offset="1" stop-color="#7d9ba8"/></linearGradient></defs>
+  <rect width="900" height="600" rx="44" fill="url(#bg)"/>
+  <g transform="translate(500 61)"><circle cx="238" cy="238" r="200" fill="#fff" fill-opacity=".7" stroke="#173c55" stroke-width="8"/><circle cx="238" cy="238" r="154" fill="none" stroke="#173c55" stroke-opacity=".28" stroke-width="4"/><path d="m238 70 45 140 123 28-123 28-45 140-45-140-123-28 123-28z" fill="#173c55"/><path d="m238 70 45 140-45 28z" fill="#e1675e"/><circle cx="238" cy="238" r="19" fill="#fff"/></g>
+  <text x="58" y="114" fill="#173c55" font-family="Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="10">SEGUÍ LA SEÑAL</text>
+  <text x="55" y="352" fill="#173c55" font-family="Georgia, serif" font-size="106" font-style="italic">Tu norte</text>
+  <path d="M58 390h318" stroke="#e1675e" stroke-width="10" stroke-linecap="round"/>
+</svg>

@@ -26,6 +26,7 @@ export function MapPage() {
     activeMissionId,
     completedMissionIds,
     completeMission,
+    queueAnimation,
     setActiveMission,
   } = useAdventureStore();
   const activeMission = useMemo(() => {
@@ -39,7 +40,7 @@ export function MapPage() {
     return getFirstAvailableMission(completedMissionIds) || requestedMission;
   }, [activeMissionId, completedMissionIds]);
   const searchArea = activeMission?.searchArea;
-  const proximity = useProximity(location, searchArea, activeMission?.id);
+  const proximity = useProximity(location, searchArea);
   const nextMission = activeMission ? getNextMission(activeMission) : undefined;
   const missionCompleted = Boolean(
     activeMission && completedMissionIds.includes(activeMission.id),
@@ -57,6 +58,16 @@ export function MapPage() {
     }
   }, [activeMission, activeMissionId, setActiveMission]);
 
+  useEffect(() => {
+    if (!activeMission || missionCompleted || proximity.level !== "very-close") return;
+
+    queueAnimation("arrival", activeMission.id);
+
+    if (activeMission.type === "geofence") {
+      completeMission(activeMission.id);
+    }
+  }, [activeMission, missionCompleted, proximity.level, queueAnimation, completeMission]);
+
   const submitCode = (code: string) => {
     if (!activeMission) return false;
     const correct = canUnlockMission(activeMission, { answer: code });
@@ -73,7 +84,7 @@ export function MapPage() {
     <div className="flex h-[calc(100dvh_-_4.8rem_-_env(safe-area-inset-bottom))] flex-col overflow-hidden">
       <Header title="Tu mapa" compact />
       <main className="relative mx-auto min-h-0 w-full max-w-2xl flex-1 px-3 pb-2">
-        <div className="relative h-full overflow-hidden rounded-[2rem] border border-white/80 bg-white shadow-[0_24px_70px_rgba(98,52,69,0.13)]">
+        <div className="relative h-full overflow-hidden rounded-[2rem] border border-white/80 bg-white shadow-[0_24px_70px_rgba(23,82,117,0.16)]">
           <Map
             key={mapRetryKey}
             location={location}
@@ -154,7 +165,7 @@ export function MapPage() {
               onContinue={continueAdventure}
             />
           ) : (
-            <section className="absolute inset-x-0 bottom-0 z-20 rounded-t-[2rem] border border-b-0 border-white/75 bg-white/95 p-6 text-center shadow-[0_-18px_55px_rgba(57,39,45,0.16)] backdrop-blur-xl">
+            <section className="absolute inset-x-0 bottom-0 z-20 rounded-t-[2rem] border border-b-0 border-white/75 bg-white/95 p-6 text-center shadow-[0_-18px_55px_rgba(23,76,108,0.16)] backdrop-blur-xl">
               <MapPinned className="mx-auto text-primary" size={30} />
               <h2 className="mt-3 font-display text-2xl text-ink">Todavía no hay una zona activa</h2>
               <p className="mt-2 text-sm leading-6 text-muted">
@@ -162,7 +173,7 @@ export function MapPage() {
               </p>
               <Link
                 to="/adventure"
-                className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold text-white"
+                className="button-luminous mt-4 inline-flex min-h-12 items-center justify-center px-6 text-sm font-semibold"
               >
                 Ir a las pistas
               </Link>

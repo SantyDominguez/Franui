@@ -4,8 +4,8 @@
   "description": "Una aventura romántica con pistas, recuerdos y lugares especiales.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#fff9f6",
-  "theme_color": "#8d3154",
+  "background_color": "#edf6fa",
+  "theme_color": "#0b416c",
   "lang": "es-AR",
   "icons": [
     {

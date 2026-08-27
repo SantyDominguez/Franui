@@ -60,11 +60,11 @@ export function AdventurePage() {
     <>
       <Header title="La aventura" />
       <PageContainer className="pt-5">
-        <section className="relative overflow-hidden rounded-[2.2rem] border border-white/75 bg-[linear-gradient(145deg,#fff8f4,#f5e2e8)] p-6 shadow-[0_28px_80px_rgba(98,52,69,0.11)] sm:p-8">
-          <div className="absolute -right-16 -top-20 size-48 rounded-full bg-accent/20 blur-3xl" aria-hidden="true" />
+        <section className="steel-surface relative overflow-hidden rounded-[2.2rem] p-6 sm:p-8">
+          <div className="absolute -right-16 -top-20 size-48 rounded-full bg-secondary/20 blur-3xl" aria-hidden="true" />
           {!clueOpen ? (
             <div className="relative py-8 text-center">
-              <span className="mx-auto grid size-20 place-items-center rounded-[2rem] bg-primary text-white shadow-xl shadow-primary/25">
+              <span className="mx-auto grid size-20 place-items-center rounded-[2rem] border border-white/70 bg-[linear-gradient(135deg,#0b416c,#55bde4)] text-white shadow-[0_18px_45px_rgba(23,110,166,0.28)]">
                 <LockKeyhole size={30} aria-hidden="true" />
               </span>
               <p className="mt-7 text-xs font-bold uppercase tracking-[0.22em] text-primary">
@@ -96,7 +96,7 @@ export function AdventurePage() {
                 <Link
                   to="/map"
                   onClick={() => setActiveMission(selectedMission.id)}
-                  className="mt-6 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-primary px-5 text-base font-semibold text-white shadow-lg shadow-primary/20 transition hover:bg-primary-strong"
+                  className="button-luminous mt-6 inline-flex min-h-14 w-full items-center justify-center gap-2 px-5 text-base font-semibold"
                 >
                   <Map size={19} aria-hidden="true" /> Abrir zona en el mapa
                   <ArrowRight size={18} aria-hidden="true" />

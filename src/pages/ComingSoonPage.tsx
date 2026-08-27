@@ -8,7 +8,7 @@ type ComingSoonPageProps = {
 
 export function ComingSoonPage({ title, description, phase }: ComingSoonPageProps) {
   return (
-    <section className="relative overflow-hidden rounded-[2rem] border border-white/75 bg-white/65 p-7 text-center shadow-[0_24px_70px_rgba(98,52,69,0.08)]">
+    <section className="relative overflow-hidden rounded-[2rem] border border-white/75 bg-white/65 p-7 text-center shadow-[0_24px_70px_rgba(23,82,117,0.1)]">
       <div className="absolute -right-10 -top-10 size-36 rounded-full bg-primary-soft blur-2xl" aria-hidden="true" />
       <span className="relative mx-auto grid size-16 place-items-center rounded-[1.6rem] bg-primary-soft text-primary">
         <Clock3 size={27} aria-hidden="true" />

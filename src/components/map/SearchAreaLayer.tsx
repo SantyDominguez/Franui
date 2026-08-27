@@ -14,13 +14,13 @@ const FILL_LAYER_ID = "mission-search-area-fill";
 const OUTLINE_LAYER_ID = "mission-search-area-outline";
 
 const colors: Record<ProximityLevel, string> = {
-  locating: "#8d3154",
-  "weak-signal": "#7a6f73",
+  locating: "#176ea6",
+  "weak-signal": "#718693",
   "very-cold": "#3979b8",
   cold: "#4f9fc8",
   warm: "#d79a45",
   hot: "#dc654d",
-  "very-close": "#8d3154",
+  "very-close": "#7d3f86",
 };
 
 export function SearchAreaLayer({ map, area, level }: SearchAreaLayerProps) {

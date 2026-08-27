@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title">
+  <title id="title">Constelación de pistas</title>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080f2d"/><stop offset=".55" stop-color="#26356f"/><stop offset="1" stop-color="#754e91"/></linearGradient><radialGradient id="g"><stop stop-color="#f7a7a3" stop-opacity=".7"/><stop offset="1" stop-color="#f7a7a3" stop-opacity="0"/></radialGradient></defs>
+  <rect width="900" height="600" rx="44" fill="url(#bg)"/>
+  <circle cx="700" cy="188" r="260" fill="url(#g)" opacity=".5"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="3"><path d="m93 433 137-183 146 80 121-183 156 85 131-124"/><path d="m230 250 55-144m212 41 44 298"/></g>
+  <g fill="#fff"><circle cx="93" cy="433" r="11"/><circle cx="230" cy="250" r="7"/><circle cx="376" cy="330" r="12"/><circle cx="497" cy="147" r="8"/><circle cx="653" cy="232" r="13"/><circle cx="784" cy="108" r="7"/><circle cx="285" cy="106" r="5"/><circle cx="541" cy="445" r="6"/></g>
+  <text x="52" y="91" fill="#fff" fill-opacity=".72" font-family="Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="10">PISTAS · LUGARES · RECUERDOS</text>
+  <text x="50" y="535" fill="#fff" font-family="Georgia, serif" font-size="88" font-style="italic">Todo conecta</text>
+</svg>

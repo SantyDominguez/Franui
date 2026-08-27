@@ -1,8 +1,8 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Map } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { Mission } from "../../types/mission";
 import { canUnlockMission } from "../../services/adventure/unlockService";
 import { CodeChallenge } from "./CodeChallenge";
-import { LocationChallenge } from "./LocationChallenge";
 import { MemoryChallenge } from "./MemoryChallenge";
 import { QuestionChallenge } from "./QuestionChallenge";
 
@@ -34,7 +34,17 @@ export function MissionUnlock({ mission, completed, onComplete }: MissionUnlockP
     return <QuestionChallenge prompt={mission.content.prompt} onSubmit={submitAnswer} />;
   }
   if (mission.type === "gps" || mission.type === "geofence") {
-    return <LocationChallenge onCheck={() => undefined} disabled />;
+    return (
+      <div className="rounded-[1.7rem] border border-primary/15 bg-primary-soft/70 p-5 text-center">
+        <p className="text-sm leading-6 text-muted">Llegá al punto final y el GPS hará el resto.</p>
+        <Link
+          to="/map"
+          className="button-luminous mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 px-5 text-sm font-semibold"
+        >
+          <Map size={18} /> Abrir mapa y seguir la señal
+        </Link>
+      </div>
+    );
   }
   if (mission.type === "photo") return <MemoryChallenge />;
 

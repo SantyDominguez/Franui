@@ -18,13 +18,13 @@ type MapProps = {
 };
 
 const areaColors: Record<ProximityLevel, string> = {
-  locating: "#8d3154",
-  "weak-signal": "#7a6f73",
+  locating: "#176ea6",
+  "weak-signal": "#718693",
   "very-cold": "#3979b8",
   cold: "#4f9fc8",
   warm: "#d79a45",
   hot: "#dc654d",
-  "very-close": "#8d3154",
+  "very-close": "#a83d59",
 };
 
 function createUserMarkerElement(avatar?: string, accuracy?: number | null) {
@@ -173,10 +173,10 @@ export function Map({
       map,
       center: userPosition,
       radius: Math.max(location.accuracy || 0, 12),
-      strokeColor: "#8d3154",
+      strokeColor: "#176ea6",
       strokeOpacity: 0.28,
       strokeWeight: 1,
-      fillColor: "#8d3154",
+      fillColor: "#55bde4",
       fillOpacity: 0.08,
       clickable: false,
     });
@@ -290,7 +290,7 @@ export function Map({
   };
 
   return (
-    <div className="relative h-full min-h-[26rem] w-full overflow-hidden bg-[#e8e1dd]">
+    <div className="relative h-full min-h-[26rem] w-full overflow-hidden bg-[#dfeef4]">
       <div ref={containerRef} className="absolute inset-0" aria-label="Mapa interactivo de Google Maps" />
       <button
         type="button"

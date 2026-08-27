@@ -1,25 +1,20 @@
 import type { Mission } from "../types/mission";
 
 /**
- * V0.2.5 incluye las tres primeras paradas reales de la aventura.
- * Los centros son exactos, pero showExactLocation permanece en false para que
- * ella vea una zona de búsqueda y tenga que guiarse con el frío/calor.
- * En este prototipo los códigos viven en el frontend y pueden inspeccionarse.
+ * Ruta real de la búsqueda. Las coordenadas se usan como centro de las zonas
+ * de frío/calor; la ubicación exacta permanece oculta.
  */
 export const missions: Mission[] = [
   {
     id: "mission-01",
     order: 1,
-    title: "La primera parada",
-    description: "Estancia Santa Catalina guarda el primer código.",
+    title: "La primera prueba",
+    description: "La primera parada de prueba ya está lista para arrancar.",
     type: "code",
     status: "available",
-    unlockCondition: {
-      type: "code",
-      code: "FRANUI1",
-    },
+    unlockCondition: { type: "code", code: "PRUEBA1" },
     searchArea: {
-      // Estancia Santa Catalina
+      // Estancia Santa Catalina — parada de prueba existente.
       center: { latitude: -31.360987, longitude: -64.304996 },
       radius: 400,
       arrivalRadius: 80,
@@ -27,30 +22,28 @@ export const missions: Mission[] = [
       warmDistance: 400,
       coldDistance: 800,
       showExactLocation: false,
-      label: "Zona de Estancia Santa Catalina",
+      label: "Zona de prueba",
     },
     content: {
       eyebrow: "Primera pista",
-      clue:
-        "Hay una persona esperándote dentro de esta zona. Seguí las señales de frío y calor hasta encontrar el lugar.",
-      arrivalMessage:
-        "Estás muy cerca. Entrá al lugar y buscá a la persona que tiene algo preparado para vos.",
-      codePrompt: "Ingresá el código que te entregue esa persona.",
-      rewardTitle: "Primera señal encontrada",
-      rewardMessage:
-        "Encontraste el primer código. Una nueva pista ya está disponible.",
+      clue: "Pasaste la prueba 1",
+      arrivalMessage: "¡SUPER CALIENTE! Ya estás en el lugar. Buscá el código que preparé.",
+      codePrompt: "Ingresá el código que encontraste.",
+      image: "images/places/place-placeholder.png",
+      rewardTitle: "¡Primera pista superada!",
+      rewardMessage: "Pasaste la prueba. Ahora sí, empieza la búsqueda de verdad.",
     },
   },
   {
     id: "mission-02",
     order: 2,
-    title: "Una nueva señal",
-    description: "La segunda persona te espera por Recta Martinolli.",
+    title: "La segunda señal",
+    description: "Una señal te espera por la Recta Martinoli.",
     type: "code",
     status: "locked",
-    unlockCondition: { type: "code", code: "FRANUI2" },
+    unlockCondition: { type: "code", code: "ANTO_SECRETO" },
     searchArea: {
-      // Av. Recta Martinolli 7602, Córdoba
+      // Anto Anto, Recta Martinoli — ubicación que ya estaba en la demo.
       center: { latitude: -31.3474092, longitude: -64.2666894 },
       radius: 380,
       arrivalRadius: 75,
@@ -58,27 +51,57 @@ export const missions: Mission[] = [
       warmDistance: 380,
       coldDistance: 760,
       showExactLocation: false,
-      label: "Zona de Recta Martinolli",
+      label: "Zona de Anto Anto",
     },
     content: {
       eyebrow: "Segunda pista",
-      clue: "El camino continúa cerca de otro lugar. El mapa no te dirá cuál: vas a tener que sentirlo.",
-      arrivalMessage: "La señal está ardiendo. Buscá a la persona indicada dentro del lugar.",
-      codePrompt: "Escribí el segundo código.",
-      rewardTitle: "Dos de tres",
-      rewardMessage: "Ya entendiste el juego. Solo queda una parada en esta demostración.",
+      clue: "¿No querés seguir probándote prendas?",
+      arrivalMessage: "¡SUPER CALIENTE! Estás donde tenías que llegar. Mirá bien a tu alrededor.",
+      codePrompt: "Ingresá el código de esta parada.",
+      image: "images/places/place-placeholder.png",
+      rewardTitle: "¡Encontraste la segunda!",
+      rewardMessage: "Una pista menos. Y todavía falta bastante para descubrir la sorpresa.",
     },
   },
   {
     id: "mission-03",
     order: 3,
-    title: "La última parada",
-    description: "La última persona de esta etapa te espera en Argüello.",
+    title: "La prueba del Palio",
+    description: "El siguiente punto está en el estacionamiento del Kempes.",
     type: "code",
     status: "locked",
-    unlockCondition: { type: "code", code: "FRANUI3" },
+    unlockCondition: { type: "code", code: "PALIO09042026" },
     searchArea: {
-      // Mundo Cookies, Lasalle 6370, X5021 Córdoba
+      // Estacionamiento del Kempes donde practican estacionar.
+      center: { latitude: -31.370655, longitude: -64.248571 },
+      radius: 430,
+      arrivalRadius: 85,
+      hotDistance: 215,
+      warmDistance: 430,
+      coldDistance: 860,
+      showExactLocation: false,
+      label: "Estacionamiento del Kempes",
+    },
+    content: {
+      eyebrow: "Tercera pista",
+      clue: "¿Practicamos de nuevo? ¿O rompemos el Palio?",
+      arrivalMessage: "¡SUPER CALIENTE! Llegaste al estacionamiento. Ahora toca encontrar la siguiente señal.",
+      codePrompt: "Ingresá el código que encontraste.",
+      image: "images/places/place-placeholder.png",
+      rewardTitle: "¡Palio desbloqueado!",
+      rewardMessage: "JAJAJA, una más y llegamos al último código.",
+    },
+  },
+  {
+    id: "mission-04",
+    order: 4,
+    title: "Unas CC bien calientes",
+    description: "La última pista con código te lleva hacia Mundo Cookies.",
+    type: "code",
+    status: "locked",
+    unlockCondition: { type: "code", code: "CRUMBLESCOOKIES" },
+    searchArea: {
+      // Mundo Cookies, Lasalle 6370 — ubicación que ya estaba en la demo.
       center: { latitude: -31.3466666, longitude: -64.2556433 },
       radius: 420,
       arrivalRadius: 85,
@@ -86,15 +109,44 @@ export const missions: Mission[] = [
       warmDistance: 420,
       coldDistance: 850,
       showExactLocation: false,
-      label: "Zona de Lasalle",
+      label: "Zona de Mundo Cookies",
     },
     content: {
-      eyebrow: "Tercera pista",
-      clue: "Una última persona te espera. Esta vez, confiá en todo lo que aprendiste durante el camino.",
-      arrivalMessage: "Llegaste a la zona final. El último código está muy cerca de vos.",
-      codePrompt: "Ingresá el código final de la demo.",
-      rewardTitle: "Lo lograste",
-      rewardMessage: "Completaste las tres paradas. La aventura real puede terminar con tu sorpresa especial.",
+      eyebrow: "Cuarta pista",
+      clue: "No vendría mal unas CC, ¿no? (bien calientes por favor)",
+      arrivalMessage: "¡SUPER CALIENTE! Estás en la última parada con código.",
+      codePrompt: "Ingresá el código final de esta búsqueda.",
+      image: "images/places/place-placeholder.png",
+      rewardTitle: "¡Código final encontrado!",
+      rewardMessage: "Listo. Ahora seguí la última coordenada y descubrí dónde termina todo.",
+    },
+  },
+  {
+    id: "mission-05",
+    order: 5,
+    title: "El lugar donde termina todo",
+    description: "Una última coordenada. Esta vez, sin código: solo tenés que llegar.",
+    type: "geofence",
+    status: "locked",
+    unlockCondition: { type: "previousMission", requiredMissionId: "mission-04" },
+    searchArea: {
+      // 31°19'56.5"S 64°17'35.8"W
+      center: { latitude: -31.3323611, longitude: -64.2932778 },
+      radius: 450,
+      arrivalRadius: 90,
+      hotDistance: 225,
+      warmDistance: 450,
+      coldDistance: 900,
+      showExactLocation: false,
+      label: "Destino final",
+    },
+    content: {
+      eyebrow: "Final",
+      clue: "Llegaste hasta acá. Ahora solo seguí la última señal.",
+      arrivalMessage: "¡SUPER CALIENTE! Llegaste al destino final. ❤️",
+      image: "images/places/place-placeholder.png",
+      rewardTitle: "Llegaste al final",
+      rewardMessage: "La búsqueda terminó. Ahora empieza la parte más linda.",
     },
   },
 ];

@@ -12,9 +12,8 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const variants: Record<ButtonVariant, string> = {
-  primary:
-    "bg-primary text-white shadow-[0_12px_30px_rgba(141,49,84,0.28)] hover:bg-primary-strong active:translate-y-px",
-  secondary: "border border-primary/15 bg-white/80 text-primary hover:bg-primary-soft",
+  primary: "button-luminous",
+  secondary: "button-silver",
   ghost: "bg-transparent text-ink hover:bg-primary-soft",
   danger: "bg-danger text-white hover:brightness-95",
 };
@@ -39,7 +38,7 @@ export function Button({
     <button
       type={type}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-[-0.01em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center justify-center gap-2 rounded-2xl font-semibold tracking-[-0.01em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
         variants[variant],
         sizes[size],
         fullWidth && "w-full",

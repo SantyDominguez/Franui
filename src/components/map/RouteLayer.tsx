@@ -34,7 +34,7 @@ export function RouteLayer({ map, route }: RouteLayerProps) {
       source: SOURCE_ID,
       layout: { "line-cap": "round", "line-join": "round" },
       paint: {
-        "line-color": "#8d3154",
+        "line-color": "#176ea6",
         "line-width": 6,
         "line-opacity": 0.9,
       },

@@ -4,7 +4,6 @@ import {
   ChevronUp,
   CloudSun,
   Flame,
-  Heart,
   Radio,
   Snowflake,
   Sparkles,
@@ -32,17 +31,17 @@ const iconByLevel = {
   cold: Snowflake,
   warm: CloudSun,
   hot: Flame,
-  "very-close": Heart,
+  "very-close": Flame,
 };
 
 const toneByLevel = {
   locating: "border-white/75 bg-white/95 text-primary",
   "weak-signal": "border-line bg-white/95 text-muted",
-  "very-cold": "border-[#9cc9ee] bg-[#edf7ff]/95 text-[#286895]",
-  cold: "border-[#9ed7e9] bg-[#eefbff]/95 text-[#287999]",
-  warm: "border-[#f0cf94] bg-[#fff9e9]/95 text-[#9b6720]",
-  hot: "border-[#efad9d] bg-[#fff2ee]/95 text-[#b94f39]",
-  "very-close": "border-primary/25 bg-[#fff3f6]/97 text-primary",
+  "very-cold": "border-[#9cc9ee] bg-[#edf7ff]/96 text-[#286895]",
+  cold: "border-[#9ed7e9] bg-[#eefbff]/96 text-[#287999]",
+  warm: "border-[#f0cf94] bg-[#fff9e9]/97 text-[#9b6720]",
+  hot: "border-[#efad9d] bg-[#fff2ee]/97 text-[#b94f39]",
+  "very-close": "border-[#d85f79]/35 bg-[#fff0f3]/97 text-[#a83d59]",
 };
 
 export function ProximityPanel({
@@ -76,7 +75,7 @@ export function ProximityPanel({
 
   if (completed) {
     return (
-      <section className="absolute inset-x-0 bottom-0 z-20 rounded-t-[2rem] border border-b-0 border-success/25 bg-success-soft/97 p-5 pb-6 text-center shadow-[0_-18px_55px_rgba(57,39,45,0.16)] backdrop-blur-xl">
+      <section className="absolute inset-x-0 bottom-0 z-20 rounded-t-[2rem] border border-b-0 border-success/25 bg-success-soft/97 p-5 pb-6 text-center shadow-[0_-18px_55px_rgba(23,76,108,0.16)] backdrop-blur-xl">
         <CheckCircle2 className="mx-auto text-success" size={34} aria-hidden="true" />
         <h2 className="mt-3 font-display text-3xl text-ink">
           {mission.content.rewardTitle || "Código correcto"}
@@ -94,7 +93,7 @@ export function ProximityPanel({
   if (collapsed) {
     return (
       <section
-        className={`absolute inset-x-0 bottom-0 z-20 rounded-t-[1.6rem] border border-b-0 px-4 pb-3 pt-2 shadow-[0_-12px_40px_rgba(57,39,45,0.14)] backdrop-blur-xl ${toneByLevel[descriptor.level]}`}
+        className={`absolute inset-x-0 bottom-0 z-20 rounded-t-[1.6rem] border border-b-0 px-4 pb-3 pt-2 shadow-[0_-12px_40px_rgba(23,76,108,0.15)] backdrop-blur-xl ${toneByLevel[descriptor.level]}`}
         aria-live="polite"
         aria-label={`Cercanía: ${descriptor.label}`}
       >
@@ -114,7 +113,7 @@ export function ProximityPanel({
           </span>
           <span className="min-w-0 flex-1">
             <span className="block text-[0.6rem] font-bold uppercase tracking-[0.18em] text-current/65">
-              Pista {String(mission.order).padStart(2, "0")} · Frío y calor
+              Pista {String(mission.order).padStart(2, "0")} · <span className="live-signal-dot mr-1" /> Detector en vivo
             </span>
             <span className="mt-0.5 block truncate font-display text-2xl leading-none text-current">
               {descriptor.label}
@@ -139,7 +138,7 @@ export function ProximityPanel({
   return (
     <section
       id={panelId}
-      className={`absolute inset-x-0 bottom-0 z-20 max-h-[58%] overflow-y-auto rounded-t-[2rem] border border-b-0 px-5 pb-6 pt-2 shadow-[0_-18px_55px_rgba(57,39,45,0.16)] backdrop-blur-xl sm:max-h-[52%] sm:pt-5 ${toneByLevel[descriptor.level]}`}
+      className={`absolute inset-x-0 bottom-0 z-20 max-h-[58%] overflow-y-auto rounded-t-[2rem] border border-b-0 px-5 pb-6 pt-2 shadow-[0_-18px_55px_rgba(23,76,108,0.16)] backdrop-blur-xl sm:max-h-[52%] sm:pt-5 ${toneByLevel[descriptor.level]}`}
       aria-live="polite"
       aria-label={`Cercanía: ${descriptor.label}`}
     >
@@ -164,8 +163,9 @@ export function ProximityPanel({
           />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-current/70">
-            Pista {String(mission.order).padStart(2, "0")}
+          <p className="flex flex-wrap items-center gap-2 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-current/70">
+            <span>Pista {String(mission.order).padStart(2, "0")}</span>
+            <span className="inline-flex items-center gap-1.5"><span className="live-signal-dot" /> Detector en vivo</span>
           </p>
           <h2 className="mt-1 font-display text-3xl leading-none text-current">{descriptor.label}</h2>
           <p className="mt-2 text-sm leading-5 text-ink/70">{message}</p>
@@ -173,7 +173,7 @@ export function ProximityPanel({
       </div>
 
       <div className="mt-4" aria-label={`Indicador de cercanía ${descriptor.progress}%`}>
-        <div className="relative h-2.5 overflow-hidden rounded-full bg-[linear-gradient(90deg,#4f9fc8_0%,#f0c46a_52%,#dc654d_78%,#8d3154_100%)]">
+        <div className="relative h-2.5 overflow-hidden rounded-full bg-[linear-gradient(90deg,#4f9fc8_0%,#56bdd0_30%,#f0c46a_56%,#dc654d_80%,#8d3154_100%)]">
           <span
             className="absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-ink shadow-md transition-[left] duration-700"
             style={{ left: `${Math.max(2, descriptor.progress)}%` }}

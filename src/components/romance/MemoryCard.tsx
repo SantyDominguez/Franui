@@ -7,7 +7,7 @@ type MemoryCardProps = {
 
 export function MemoryCard({ memory }: MemoryCardProps) {
   return (
-    <article className="overflow-hidden rounded-[1.7rem] border border-white/75 bg-white/70 shadow-[0_18px_50px_rgba(98,52,69,0.08)]">
+    <article className="overflow-hidden rounded-[1.7rem] border border-white/75 bg-white/70 shadow-[0_18px_50px_rgba(23,82,117,0.1)]">
       <div className="grid aspect-[4/3] place-items-center bg-primary-soft text-primary">
         {memory.isUnlocked ? <Heart className="fill-current" size={30} /> : <LockKeyhole size={28} />}
       </div>
