@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title">
+  <title id="title">Tesoro de la aventura</title>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#042d39"/><stop offset=".55" stop-color="#0b6670"/><stop offset="1" stop-color="#2fa6a2"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0a8"/><stop offset=".5" stop-color="#efba4f"/><stop offset="1" stop-color="#b56b22"/></linearGradient></defs>
+  <rect width="900" height="600" rx="44" fill="url(#bg)"/>
+  <g fill="#fff" opacity=".75"><path d="m136 99 12 29 30 12-30 12-12 30-12-30-30-12 30-12z"/><path d="m776 161 8 18 18 8-18 8-8 18-8-18-18-8 18-8z"/><circle cx="712" cy="83" r="6"/><circle cx="203" cy="453" r="5"/></g>
+  <g transform="translate(485 146)"><path d="M38 141c0-78 54-120 143-120s143 42 143 120" fill="none" stroke="url(#gold)" stroke-width="48"/><rect x="10" y="135" width="342" height="250" rx="34" fill="url(#gold)"/><path d="M10 201h342M181 136v249" fill="none" stroke="#704118" stroke-opacity=".55" stroke-width="17"/><circle cx="181" cy="255" r="39" fill="#714019"/><path d="M181 266v48" stroke="#f9d878" stroke-width="15" stroke-linecap="round"/></g>
+  <text x="56" y="108" fill="#d9ffff" font-family="Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="10">ALGO TE ESPERA</text>
+  <text x="48" y="340" fill="#fff" font-family="Georgia, serif" font-size="116" font-style="italic">El tesoro</text>
+  <text x="58" y="414" fill="#fff" fill-opacity=".67" font-family="Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="5">ESTÁ EN EL CAMINO</text>
+</svg>

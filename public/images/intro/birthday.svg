@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title">
+  <title id="title">Tarjeta de feliz cumpleaños</title>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffcc78"/><stop offset=".55" stop-color="#f18469"/><stop offset="1" stop-color="#aa4369"/></linearGradient></defs>
+  <rect width="900" height="600" rx="44" fill="url(#bg)"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="4"><circle cx="750" cy="115" r="155"/><circle cx="750" cy="115" r="112"/><circle cx="750" cy="115" r="66"/></g>
+  <g transform="translate(612 170)"><path d="M20 282h208l-19-141H39z" fill="#fff" fill-opacity=".9"/><path d="M50 143h149l-20-70H70z" fill="#ffe8b3"/><path d="M81 70V13m44 57V3m44 67V18" stroke="#fff" stroke-width="13" stroke-linecap="round"/><path d="M81 16c-21-20 7-38 7-38s21 23-7 38m44-10c-21-20 7-38 7-38s21 23-7 38m44 14c-21-20 7-38 7-38s21 23-7 38" fill="#fff3a8"/></g>
+  <text x="55" y="120" fill="#fff" font-family="Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="11">HOY CELEBRAMOS</text>
+  <text x="52" y="348" fill="#fff" font-family="Arial, sans-serif" font-size="160" font-weight="900" letter-spacing="-8">FELIZ</text>
+  <text x="62" y="435" fill="#fff" fill-opacity=".82" font-family="Georgia, serif" font-size="64" font-style="italic">cumpleaños</text>
+</svg>
