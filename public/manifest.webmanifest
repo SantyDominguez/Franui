@@ -1,0 +1,18 @@
+{
+  "name": "Nuestra Aventura",
+  "short_name": "Aventura",
+  "description": "Una aventura romántica con pistas, recuerdos y lugares especiales.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#edf6fa",
+  "theme_color": "#0b416c",
+  "lang": "es-AR",
+  "icons": [
+    {
+      "src": "icons/heart-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

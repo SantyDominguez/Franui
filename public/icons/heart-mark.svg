@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nuestra Aventura">
+  <defs>
+    <linearGradient id="blue" x1="8" y1="6" x2="58" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0b416c"/>
+      <stop offset="1" stop-color="#55bde4"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#blue)"/>
+  <rect x="7" y="7" width="50" height="50" rx="14" fill="none" stroke="#dce8ed" stroke-opacity=".52"/>
+  <text x="32" y="43" text-anchor="middle" font-size="32" fill="#edf3f6">♥</text>
+</svg>
