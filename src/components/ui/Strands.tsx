@@ -201,7 +201,7 @@ const buildPalette = (colors: string[]) => {
 };
 
 export default function Strands({
-  colors = ["#FF4242", "#7C3AED", "#06B6D4", "#EAB308"],
+  colors = ["#ff00ea", "#89878b", "#0378fd", "#ff0505"],
   count = 3,
   speed = 0.5,
   amplitude = 1,
@@ -342,8 +342,12 @@ export default function Strands({
     container.appendChild(gl.canvas);
 
     function resize() {
-      const width = container.offsetWidth;
-      const height = container.offsetHeight;
+      const currentContainer = containerRef.current;
+
+      if (!currentContainer) return;
+
+      const width = currentContainer.offsetWidth;
+      const height = currentContainer.offsetHeight;
 
       renderer.setSize(width, height);
       program.uniforms.uResolution.value = [width, height];

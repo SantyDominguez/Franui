@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import { AppShell } from "../components/layout/AppShell";
 import { HomePage } from "../pages/HomePage";
 import { NotFoundPage } from "../pages/NotFoundPage";
-import { FinalMemoryPage } from "../pages/FinalMemoryPage";
 
 const AdventurePage = lazy(() =>
   import("../pages/AdventurePage").then((module) => ({
