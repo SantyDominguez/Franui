@@ -1254,3 +1254,57 @@ body {
       0 0 32px rgb(56 189 248 / 34%);
   }
 }
+
+.intro-screen,
+.recording-reminder,
+.final-bot-overlay,
+.mission-motion {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+.intro-screen *,
+.recording-reminder *,
+.final-bot-overlay *,
+.mission-motion * {
+  box-sizing: border-box;
+}
+
+.intro-kinetic,
+.intro-gateway,
+.recording-reminder,
+.final-bot-overlay,
+.mission-motion {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+body:has(.intro-screen),
+body:has(.recording-reminder),
+body:has(.final-bot-overlay),
+body:has(.mission-motion) {
+  overflow: hidden;
+}
+
+.final-bot-overlay {
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background:
+    radial-gradient(circle at 20% 20%, rgb(236 72 153 / 24%), transparent 34%),
+    radial-gradient(circle at 78% 28%, rgb(56 189 248 / 24%), transparent 34%),
+    linear-gradient(135deg, #fff7fb, #f3e8ff 52%, #eaf7ff);
+}
+
+.final-bot-overlay .final-bot {
+  width: min(100%, 920px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+}
