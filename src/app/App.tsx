@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { AdventureMusic } from "../components/audio/AdventureMusic";
 import { IntroScreen } from "../components/layout/IntroScreen";
 import { RecordingReminder } from "../components/layout/RecordingReminder";
 import { AppRouter } from "./router";
@@ -20,6 +21,7 @@ export default function App() {
 
   return (
     <AppProviders>
+      <AdventureMusic />
       {showIntro && <IntroScreen onComplete={completeIntro} />}
       {showRecordingReminder && (
         <RecordingReminder onComplete={completeRecordingReminder} />

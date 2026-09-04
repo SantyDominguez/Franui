@@ -18,12 +18,8 @@ export const projectConfig = {
     motionWords: ["Feliz", "Cumpleaños", "Delfi", "Te", "Amo", "Corazón"],
     welcomeMessage: "Bienvenida a la búsqueda del tesoro",
     fireworksImage: "images/intro/fireworks-background.webp",
-    /**
-     * Dejalo vacío mientras probás la app.
-     * Cuando decidas el horario, usá ISO con zona de Córdoba, por ejemplo:
-     * "2026-09-12T18:00:00-03:00"
-     */
-    unlockAt: "",
+    // Viernes 4 de septiembre de 2026 a las 18:00, hora de Córdoba.
+    unlockAt: "2026-09-04T18:00:00-03:00",
     wallImages: [
       "images/intro/BARIFRANUI.jpg",
       "images/intro/FRANU222.jpg",

@@ -1,164 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ADVENTURE_MUSIC_START_EVENT } from "../components/audio/AdventureMusic";
 import { DriverReveal } from "../components/driver/DriverReveal";
 import { LoveMessage } from "../components/romance/LoveMessage";
 import { PhotoReveal } from "../components/romance/PhotoReveal";
 import { projectConfig } from "../data/projectConfig";
 
-type SpotifyController = {
-  play: () => void;
-  pause: () => void;
-  togglePlay: () => void;
-};
-
-type SpotifyIframeApi = {
-  createController: (
-    element: HTMLElement,
-    options: {
-      uri: string;
-      width: string;
-      height: number;
-    },
-    callback: (controller: SpotifyController) => void,
-  ) => void;
-};
-
-let spotifyIframeApiPromise: Promise<SpotifyIframeApi> | null = null;
-
-function loadSpotifyIframeApi() {
-  if (spotifyIframeApiPromise) return spotifyIframeApiPromise;
-
-  spotifyIframeApiPromise = new Promise<SpotifyIframeApi>((resolve, reject) => {
-    const timeoutId = window.setTimeout(() => {
-      spotifyIframeApiPromise = null;
-      reject(new Error("Spotify tardó demasiado en responder."));
-    }, 15_000);
-
-    window.onSpotifyIframeApiReady = (iframeApi) => {
-      window.clearTimeout(timeoutId);
-      resolve(iframeApi);
-    };
-
-    const previousScript = document.querySelector(
-      'script[src="https://open.spotify.com/embed/iframe-api/v1"]',
-    );
-
-    // Si quedó un script cargado de un montaje anterior, su callback ya se
-    // ejecutó. Lo recreamos para recibir nuevamente la API de forma segura.
-    previousScript?.remove();
-
-    const spotifyScript = document.createElement("script");
-    spotifyScript.src = "https://open.spotify.com/embed/iframe-api/v1";
-    spotifyScript.async = true;
-    spotifyScript.addEventListener(
-      "error",
-      () => {
-        window.clearTimeout(timeoutId);
-        spotifyIframeApiPromise = null;
-        reject(new Error("No se pudo cargar Spotify."));
-      },
-      { once: true },
-    );
-    document.body.appendChild(spotifyScript);
-  });
-
-  return spotifyIframeApiPromise;
-}
-
-declare global {
-  interface Window {
-    onSpotifyIframeApiReady?: (iframeApi: SpotifyIframeApi) => void;
-  }
-}
-
-/*
-  Ejemplo de enlace:
-
-  https://open.spotify.com/playlist/37i9dQZF1DX...
-
-  El ID es todo lo que aparece después de /playlist/
-  y antes del signo ? si lo hubiera.
-*/
-
-const SPOTIFY_PLAYLIST_URI = "spotify:playlist:4xPWOwetrfaacRJJz8X1KB";
-
 export function HomePage() {
   const navigate = useNavigate();
 
   const [showDriverReveal, setShowDriverReveal] = useState(false);
-  const [spotifyReady, setSpotifyReady] = useState(false);
-  const [spotifyError, setSpotifyError] = useState(false);
-  const [waitingToStart, setWaitingToStart] = useState(false);
-
-  const spotifyControllerRef = useRef<SpotifyController | null>(null);
-  const startRequestedRef = useRef(false);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    void loadSpotifyIframeApi()
-      .then((iframeApi) => {
-        const spotifyElement = document.getElementById("spotify-player");
-
-        if (!spotifyElement || cancelled) {
-          return;
-        }
-
-        iframeApi.createController(
-          spotifyElement,
-          {
-            uri: SPOTIFY_PLAYLIST_URI,
-            width: "100%",
-            height: 152,
-          },
-          (controller) => {
-            if (cancelled) {
-              return;
-            }
-
-            spotifyControllerRef.current = controller;
-            setSpotifyReady(true);
-            setSpotifyError(false);
-
-            if (startRequestedRef.current) {
-              startRequestedRef.current = false;
-              setWaitingToStart(false);
-              controller.play();
-              setShowDriverReveal(true);
-            }
-          },
-        );
-      })
-      .catch(() => {
-        if (!cancelled) {
-          startRequestedRef.current = false;
-          setWaitingToStart(false);
-          setSpotifyError(true);
-        }
-      });
-
-    return () => {
-      cancelled = true;
-      spotifyControllerRef.current = null;
-    };
-  }, []);
 
   const startSearch = () => {
-    const controller = spotifyControllerRef.current;
-
-    if (controller) {
-      controller.play();
-      setShowDriverReveal(true);
-      return;
-    }
-
-    if (spotifyError) {
-      setShowDriverReveal(true);
-      return;
-    }
-
-    startRequestedRef.current = true;
-    setWaitingToStart(true);
+    window.dispatchEvent(new Event(ADVENTURE_MUSIC_START_EVENT));
+    setShowDriverReveal(true);
   };
 
   const continueToAdventure = () => {
@@ -203,27 +58,9 @@ export function HomePage() {
                 className="button-luminous inline-flex min-h-14 items-center justify-center px-7 text-base font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
                 onClick={startSearch}
               >
-                {waitingToStart
-                  ? "Preparando música…"
-                  : spotifyError
-                    ? "Continuar sin música"
-                    : "Empezar búsqueda"}
+                Empezar búsqueda
               </button>
             </div>
-
-            <div className="mt-5 w-full max-w-xl overflow-hidden rounded-2xl shadow-[0_15px_40px_rgba(23,110,166,0.12)]">
-              <div id="spotify-player" />
-            </div>
-
-            {spotifyError ? (
-              <p className="mt-3 max-w-xl text-sm font-semibold text-primary" role="status">
-                Spotify no respondió, pero podés continuar la aventura normalmente.
-              </p>
-            ) : !spotifyReady ? (
-              <p className="mt-3 max-w-xl text-sm text-muted" role="status">
-                Conectando con Spotify…
-              </p>
-            ) : null}
 
             <p className="mt-7 max-w-xl text-sm leading-6 text-muted">
               Tu ubicación se usa solamente mientras el mapa está abierto y no

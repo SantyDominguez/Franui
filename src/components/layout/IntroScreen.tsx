@@ -115,7 +115,7 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
   const scheduleMessage = unlock.configurationError
     ? "El horario cargado no es válido. Revisá la configuración antes de compartir la app."
     : unlock.configured && unlock.unlockDate
-      ? `Se desbloquea el ${formatUnlockDate(unlock.unlockDate)}, hora de Córdoba.`
+      ? `La búsqueda se habilita el ${formatUnlockDate(unlock.unlockDate)}, hora de Córdoba.`
       : "Horario pendiente · el acceso está habilitado para probar la experiencia.";
 
   return (
@@ -241,7 +241,7 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
                       : unlock.configured
                         ? unlock.unlocked
                           ? "La aventura ya está disponible"
-                          : "Todavía falta un poquito"
+                          : "La búsqueda se habilita a las 18:00"
                         : "Modo de prueba"}
                   </strong>
                   <small>{scheduleMessage}</small>
