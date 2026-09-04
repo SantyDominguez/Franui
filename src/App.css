@@ -35,6 +35,93 @@ main > * {
 }
 
 /* Primera escena: motion graphics. La pared todavía no está montada. */
+.intro-ready {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 50% 35%, rgb(255 117 177 / 34%), transparent 32%),
+    radial-gradient(circle at 25% 80%, rgb(84 193 255 / 20%), transparent 30%),
+    linear-gradient(145deg, #080b18, #251125 55%, #0b1020);
+}
+
+.intro-ready__glow {
+  position: absolute;
+  width: min(78vw, 560px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(255 105 180 / 25%), transparent 68%);
+  filter: blur(18px);
+  animation: intro-ready-pulse 2.2s ease-in-out infinite;
+}
+
+.intro-ready__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.intro-ready__content p {
+  margin: 0;
+  color: rgb(255 255 255 / 78%);
+  font-size: clamp(0.8rem, 2.8vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.intro-ready__content button {
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 999px;
+  padding: 16px 34px;
+  color: #fff;
+  font: inherit;
+  font-size: clamp(1.05rem, 4vw, 1.3rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff5da2, #c94eff 55%, #5abfff);
+  box-shadow:
+    0 18px 46px rgb(220 65 155 / 40%),
+    inset 0 1px 0 rgb(255 255 255 / 45%);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.intro-ready__content button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 22px 54px rgb(220 65 155 / 50%),
+    inset 0 1px 0 rgb(255 255 255 / 50%);
+}
+
+.intro-ready__content button:active {
+  transform: scale(0.97);
+}
+
+.intro-ready__content button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 5px;
+}
+
+.intro-ready__content small {
+  color: rgb(255 255 255 / 66%);
+  font-weight: 700;
+}
+
+@keyframes intro-ready-pulse {
+  50% {
+    transform: scale(1.12);
+    opacity: 0.72;
+  }
+}
+
 .intro-kinetic {
   position: relative;
   display: grid;

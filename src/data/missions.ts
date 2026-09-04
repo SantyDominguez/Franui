@@ -46,8 +46,7 @@ export const missions: Mission[] = [
     unlockCondition: { type: "code", code: "CLERMONT180" },
     searchArea: {
       // Enfermera Clermont 180, Córdoba.
-      // Revisá la coordenada exacta en Google Maps antes de publicarlo si querés máxima precisión.
-      center: { latitude: -31.37755, longitude: -64.23735 },
+      center: { latitude: -31.405651, longitude: -64.211582 },
       radius: 380,
       arrivalRadius: 75,
       hotDistance: 190,
@@ -107,7 +106,7 @@ export const missions: Mission[] = [
     description: "La última pista con código te lleva hacia ... unas CC.",
     type: "code",
     status: "locked",
-    unlockCondition: { type: "code", code: "CRUMBLESCOOKIES" },
+    unlockCondition: { type: "code", code: "COOKIESLOVE" },
     searchArea: {
       // Mundo Cookies, Lasalle 6370 — ubicación que ya estaba en la demo.
       center: { latitude: -31.3466666, longitude: -64.2556433 },

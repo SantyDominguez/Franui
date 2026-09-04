@@ -14,7 +14,7 @@ type IntroScreenProps = {
   onComplete: () => void;
 };
 
-type IntroStage = "motion" | "gateway";
+type IntroStage = "ready" | "motion" | "gateway";
 
 const ARGENTINA_TIME_ZONE = "America/Argentina/Cordoba";
 const MOTION_DURATION_MS = 7_500;
@@ -47,8 +47,10 @@ function formatRemainingTime(milliseconds: number) {
 }
 
 export function IntroScreen({ onComplete }: IntroScreenProps) {
-  const [stage, setStage] = useState<IntroStage>("motion");
+  const [stage, setStage] = useState<IntroStage>("ready");
   const [leaving, setLeaving] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const startingRef = useRef(false);
   const leavingRef = useRef(false);
   const exitTimerRef = useRef<number | null>(null);
   const unlock = useIntroUnlock(projectConfig.intro.unlockAt);
@@ -61,14 +63,39 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
     [],
   );
 
+  const startExperience = useCallback(async () => {
+    if (startingRef.current || stage !== "ready") return;
+    startingRef.current = true;
+
+    try {
+      const audio = audioRef.current;
+      if (audio) {
+        audio.currentTime = 0;
+        audio.volume = 0.8;
+        await audio.play();
+      }
+      setStage("motion");
+    } catch {
+      // El navegador bloqueó el autoplay. Dejamos el botón visible para que
+      // el toque de la persona inicie el audio y la animación sincronizados.
+      startingRef.current = false;
+    }
+  }, [stage]);
+
   useEffect(() => {
+    void startExperience();
+  }, [startExperience]);
+
+  useEffect(() => {
+    if (stage !== "motion") return;
+
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const stageTimer = window.setTimeout(
       () => setStage("gateway"),
       reduceMotion ? REDUCED_MOTION_DURATION_MS : MOTION_DURATION_MS,
     );
     return () => window.clearTimeout(stageTimer);
-  }, []);
+  }, [stage]);
 
   useEffect(
     () => () => {
@@ -102,7 +129,24 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
           : projectConfig.intro.welcomeMessage
       }
     >
-      {stage === "motion" ? (
+      <audio
+        ref={audioRef}
+        src={`${import.meta.env.BASE_URL}audio/FUEGOS.mp3`}
+        preload="auto"
+      />
+
+      {stage === "ready" ? (
+        <section className="intro-ready">
+          <div className="intro-ready__glow" aria-hidden="true" />
+          <div className="intro-ready__content">
+            <p>Una sorpresa para vos</p>
+            <button type="button" onClick={() => void startExperience()}>
+              Comenzar
+            </button>
+            <small>Activá el sonido 💗</small>
+          </div>
+        </section>
+      ) : stage === "motion" ? (
         <section className="intro-kinetic">
           <div className="intro-kinetic__background" aria-hidden="true">
             <img
